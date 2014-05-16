@@ -1,0 +1,51 @@
+//
+// Mixins
+// --------------------------------------------------
+
+// Utilities
+// -------------------------
+
+// Webkit-style focus
+tab-focus()
+  //default
+  outline thin dotted #333
+  //webkit
+  outline 5px auto -webkit-focus-ring-color
+  outline-offset -2px
+// User select 
+user-select(x)
+  -webkit-user-select x
+  -moz-user-select x
+  -ms-user-select x
+  user-select x
+// Background gradient
+background-image-gradient()
+  background-image -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e6e6e6))
+  background-image -webkit-linear-gradient(top, #fff, #e6e6e6)
+  background-image -moz-linear-gradient(top, #fff, #e6e6e6)
+  background-image -o-linear-gradient(top, #fff, #e6e6e6)
+  background-image linear-gradient(top, #fff, #e6e6e6)
+// IE filter
+filter(fromcolor,tocolor)
+  filter unquote("progid:DXImageTransform.Microsoft.gradient(startColorstr="+fromcolor+", endColorstr="+tocolor+", GradientType=0)")
+
+
+
+// Button variants
+// -------------------------
+button-variant(color,background-color,border-color)
+  color color
+  background-color background-color
+  border-color border-color
+  &:hover,&:focus,&:active
+    background-color: darken(@background-color, 8%);
+    color color
+
+// Table stripe
+// -------------------------
+stripe(even=#fff,odd=#eee)
+  tr
+    background-color odd
+    &.even
+    &:nth-child(even)
+      background-color even
